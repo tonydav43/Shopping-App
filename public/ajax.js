@@ -71,7 +71,7 @@ $("#todo-list").on("submit", ".edit-item-form", function(e) {
 
 $("#todo-list").on("submit", ".delete-item-form", function(e) {
 	e.preventDefault();
-	let confirmResponse = confirm("Are you sure?");
+	let confirmResponse = confirm("Are you sure you want to delete the item from the shopping list?");
 	if(confirmResponse) {
 		let actionUrl = $(this).attr("action");
 		$itemTodelete = $(this).closest(".list-group-item")
