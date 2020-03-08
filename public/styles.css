@@ -1,0 +1,57 @@
+body {
+  padding-top: 200px;
+  background: url("https://upload.wikimedia.org/wikipedia/commons/d/d2/Supermarket_interior_Coop_Extra_GR%C3%98NT_FRUKT_vegetables_fruit_Tj%C3%B8me%2C_Norway_2017-11-02.jpg")
+  no-repeat center center fixed;
+  background-size: cover;
+}
+
+#main-container {
+	background-color: #e3f2fd;
+	padding-top: 25px;
+	padding-bottom: 50px;
+}
+
+#title-span {
+	background-color: #e3f2fd;
+	text-align: center;
+	font-weight: bold;
+	color: #c28285;
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+input[type="text"] {
+	background-color: #f2f2f2;
+}
+
+li.list-group-item {
+	background-color: #f2f2f2;
+}
+
+.edit-item-form {
+	display: none;
+}
+
+.input-items {
+	padding-top: 50px;
+}
+
+h1 {
+	text-align: center;
+	font-weight: bold;
+	color: #c28285;
+}
+
+.new-item {
+	text-align: center
+}
+
+.edit-button {
+	color: black;
+	font-weight: 500;
+}
+
+.delete-button {
+	color: black;
+	font-weight: 500;
+}
