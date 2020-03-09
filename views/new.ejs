@@ -1,15 +1,17 @@
 <%- include("partials/header") %>
 
-<div class="row">
-	<div class="col-md-6 col-md-offset-3">
-		<h1>New Item</h1>
-		<form action="/todos" method="POST">
+<div id="main-container" class="container">
+	<div class="row">
+		<div class="col-sm">
+			<h1>New Shopping Item</h1>
+		<form action="/todos" method="POST" id="new-todo-form">
 			<div class="form-group">
-				<label>Item Text</label>
-				<input type="text" name="todo[text]" class="form-control">
+				<label for="new-item"></label>
+				<input type="text" name="todo[text]" class="form-control" placeholder="Enter you shopping item here" id="new-item" maxlength="50"> 
 			</div>
-			<button class="btn btn-primary">Create Item</button>
+			<button class="btn btn-success">Add to my shopping list</button>
 		</form>
+		</div>
 	</div>
 </div>
 

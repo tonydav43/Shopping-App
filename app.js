@@ -47,7 +47,7 @@ app.post("/todos", (req, res) =>{
     if(err){
       res.render("new");
     } else {
-	res.json(newTodo);
+      res.json(newTodo);
     }
   });
 });
@@ -68,9 +68,9 @@ app.put("/todos/:id", (req, res) =>{
    if(err){
      console.log(err);
    } else {
-	res.json(todo);	
-    }
-  });
+      res.json(todo);
+   }
+ });
 });
 
 app.delete("/todos/:id", (req, res) =>{
@@ -78,7 +78,7 @@ app.delete("/todos/:id", (req, res) =>{
    if(err){
      console.log(err);
    } else {
-		res.json(todo);	
+      res.json(todo);
    }
  }); 
 });
