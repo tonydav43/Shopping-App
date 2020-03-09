@@ -1,3 +1,4 @@
+// Create To Do Item
 $("#new-todo-form").submit(function(e) {
 	e.preventDefault();
 	let toDoItem = $(this).serialize();
@@ -29,6 +30,7 @@ $("#new-todo-form").submit(function(e) {
 	});
 });
 
+// Edit To Do Item
 $("#todo-list").on("click", ".edit-button", function() {
 	$(this).parent().siblings(".edit-item-form").toggle();
 });
@@ -69,6 +71,7 @@ $("#todo-list").on("submit", ".edit-item-form", function(e) {
 	});
 });
 
+// Delete To Do Item
 $("#todo-list").on("submit", ".delete-item-form", function(e) {
 	e.preventDefault();
 	let confirmResponse = confirm("Are you sure you want to delete the item from the shopping list?");
