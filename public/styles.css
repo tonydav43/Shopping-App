@@ -46,12 +46,18 @@ h1 {
 	text-align: center
 }
 
-.edit-button {
-	color: black;
-	font-weight: 500;
+button {
+	color: black !important;
+	font-weight: 500 !important;	
 }
 
-.delete-button {
-	color: black;
-	font-weight: 500;
+button:hover {
+	color: white !important;
 }
+
+.btn:active {
+	position: relative;
+	top: 2px;
+}
+
+

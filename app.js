@@ -1,9 +1,9 @@
-const express       = require("express");
-const app           = express();
-const mongoose      = require("mongoose");
-const bodyParser    = require("body-parser");
+const express       	= require("express");
+const app           	= express();
+const mongoose      	= require("mongoose");
+const bodyParser    	= require("body-parser");
 const expressSanitizer  = require("express-sanitizer");
-const methodOverride  = require('method-override');
+const methodOverride  	= require('method-override');
 
 mongoose.connect("mongodb://localhost:27017/shopping-app", {useMongoClient:true});
 app.use(express.static('public'));
@@ -84,5 +84,5 @@ app.delete("/todos/:id", (req, res) =>{
 });
 
 app.listen(3000, () =>{
-  console.log('Server running shopping app on port 3000');
+  console.log("Server running shopping app on port 3000");
 });
