@@ -5,9 +5,9 @@ const bodyParser    = require("body-parser");
 const expressSanitizer  = require("express-sanitizer");
 const methodOverride  = require('method-override');
 
-//mongoose.connect("mongodb://localhost:27017/shopping-app", {useMongoClient:true});
-let url = process.env.DATABASEURL || "mongodb://localhost:27017/shopping-app";
-mongoose.connect(url, {useMongoClient:true});
+mongoose.connect("mongodb://localhost:27017/shopping-app", {useMongoClient:true});
+/*let url = process.env.DATABASEURL || "mongodb://localhost:27017/shopping-app";
+mongoose.connect(url, {useMongoClient:true});*/
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
@@ -85,10 +85,10 @@ app.delete("/todos/:id", function (req, res) {
  }); 
 });
 
-app.listen(process.env.PORT || 3000,function () {
+/*app.listen(process.env.PORT || 3000,function () {
   console.log("Server running shopping app on port 3000 " + process.env.PORT);
-});
-
-/*app.listen(3000, () =>{
-  console.log('Server running shopping app on port 3000');
 });*/
+
+app.listen(3000, function () {
+  console.log('Server running shopping app on port 3000');
+});
