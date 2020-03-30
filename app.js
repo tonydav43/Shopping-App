@@ -24,11 +24,11 @@ let todoSchema = new mongoose.Schema({
 
 let Todo = mongoose.model("Todo", todoSchema);
 
-app.get("/", (req, res) =>{
+app.get("/", function (req, res) {
   res.redirect("/todos");
 });
 
-app.get("/todos", (req, res) =>{
+app.get("/todos", function (req, res) {
   Todo.find({}, (err, todos) =>{
     if(err){
       console.log(err);
@@ -42,14 +42,14 @@ app.get("/todos", (req, res) =>{
   });
 });
 
-app.get("/todos/new", (req, res) =>{
+app.get("/todos/new", function (req, res) {
  res.render("new"); 
 });
 
-app.post("/todos", (req, res) =>{
+app.post("/todos", function (req, res) {
  req.body.todo.text = req.sanitize(req.body.todo.text);
  let formData = req.body.todo;
- Todo.create(formData, (err, newTodo) =>{
+ Todo.create(formData, function (err, newTodo) {
     if(err){
       res.render("new");
     } else {
@@ -58,8 +58,8 @@ app.post("/todos", (req, res) =>{
   });
 });
 
-app.get("/todos/:id/edit", (req, res) =>{
- Todo.findById(req.params.id, (err, todo) =>{
+app.get("/todos/:id/edit", function (req, res) {
+ Todo.findById(req.params.id, function (err, todo) {
    if(err){
      console.log(err);
      res.redirect("/")
@@ -69,7 +69,7 @@ app.get("/todos/:id/edit", (req, res) =>{
  });
 });
 
-app.put("/todos/:id", (req, res) =>{
+app.put("/todos/:id", function (req, res) {
  Todo.findByIdAndUpdate(req.params.id, req.body.todo, { new: true }, (err, todo) =>{
    if(err){
      console.log(err);
@@ -79,8 +79,8 @@ app.put("/todos/:id", (req, res) =>{
  });
 });
 
-app.delete("/todos/:id", (req, res) =>{
- Todo.findByIdAndRemove(req.params.id, (err, todo) =>{
+app.delete("/todos/:id", function (req, res) {
+ Todo.findByIdAndRemove(req.params.id, function (err, todo) {
    if(err){
      console.log(err);
    } else {
@@ -89,6 +89,6 @@ app.delete("/todos/:id", (req, res) =>{
  }); 
 });
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 3000, function () {
   console.log("Server running shopping app on port 3000 " + process.env.PORT);
 });
