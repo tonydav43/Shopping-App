@@ -6,7 +6,11 @@ const expressSanitizer  = require("express-sanitizer");
 const methodOverride  	= require('method-override');
 
 let url = process.env.DATABASEURL || "mongodb://localhost:27017/shopping-app";
-mongoose.connect(url, {useMongoClient:true});
+mongoose.connect(url, 
+{useMongoClient:true,
+useNewUrlParser: true,
+useCreateIndex: true,
+useUnifiedTopology: true});
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
