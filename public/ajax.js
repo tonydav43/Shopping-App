@@ -11,15 +11,15 @@ $("#new-todo-form").submit(function(e) {
 							<label for="${data._id}"></label>
 							<input type="text" value="${data.text}" name="todo[text]" class="form-control" id="{data._id}">
 						</div>
-						<button class="btn btn-success">Update the item</button>
+						<button class="btn btn-success">Legg til handlelisten</button>
 					</form>
 				<span class="lead">
 				${data.text}
 				</span>
 					<div class="float-right">
-						<button class="btn btn-sm btn-warning edit-button">Edit item</button>
+						<button class="btn btn-sm btn-warning edit-button">Rediger</button>
 						<form style="display: inline" method="POST" action="/todos/${data._id}" class="delete-item-form">
-							<button type="submit" class="btn btn-sm btn-danger delete-button">Got it</button>
+							<button type="submit" class="btn btn-sm btn-danger delete-button">Gjort</button>
 						</form>
 					</div>
 					<div class="clearfix"></div>
@@ -59,9 +59,9 @@ $("#todo-list").on("submit", ".edit-item-form", function(e) {
 						${data.text}
 					</span>
 					<div class="float-right">
-						<button class="btn btn-sm btn-warning edit-button">Edit item</button>
+						<button class="btn btn-sm btn-warning edit-button">Rediger</button>
 						<form style="display: inline" method="POST" action="/todos/${data._id}" class="delete-item-form">
-							<button type="submit" class="btn btn-sm btn-danger delete-button">Got it</button>
+							<button type="submit" class="btn btn-sm btn-danger delete-button">Gjort</button>
 						</form>
 					</div>
 					<div class="clearfix"></div>
@@ -74,8 +74,8 @@ $("#todo-list").on("submit", ".edit-item-form", function(e) {
 // Delete To Do Item
 $("#todo-list").on("submit", ".delete-item-form", function(e) {
 	e.preventDefault();
-	let confirmResponse = confirm("Are you sure you have the shopping list item?");
-	if(confirmResponse) {
+	//let confirmResponse = confirm("Are you sure you have the shopping list item?"); if you want a confirmation message
+	//if(confirmResponse) { if you want a confirmation message
 		let actionUrl = $(this).attr("action");
 		$itemTodelete = $(this).closest(".list-group-item")
 		$.ajax({
@@ -86,9 +86,9 @@ $("#todo-list").on("submit", ".delete-item-form", function(e) {
 				this.itemTodelete.remove();
 			}
 		});
-	} else {
-		$(this).find("button").blur();
-	}
+	//} else { if you want a confirmation message
+		//$(this).find("button").blur(); if you want a confirmation message that takes away the delete blur
+	//}
 }); 
 
 
