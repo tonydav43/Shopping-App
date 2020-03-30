@@ -1,17 +1,13 @@
-const express       	= require("express");
-const app           	= express();
-const mongoose      	= require("mongoose");
-const bodyParser    	= require("body-parser");
+const express       = require("express");
+const app           = express();
+const mongoose      = require("mongoose");
+const bodyParser    = require("body-parser");
 const expressSanitizer  = require("express-sanitizer");
-const methodOverride  	= require('method-override');
+const methodOverride  = require('method-override');
 
-let url = process.env.DATABASEURL || "mongodb://localhost:27017/shopping-app";
-mongoose.connect(url, 
-{useMongoClient:true,
-useNewUrlParser: true,
-useCreateIndex: true,
-useUnifiedTopology: true});
-
+mongoose.connect("mongodb://localhost:27017/shopping-app", {useMongoClient:true});
+/*let url = process.env.DATABASEURL || "mongodb://localhost:27017/shopping-app";
+mongoose.connect(url, {useMongoClient:true});*/
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
@@ -24,11 +20,11 @@ let todoSchema = new mongoose.Schema({
 
 let Todo = mongoose.model("Todo", todoSchema);
 
-app.get("/", function (req, res) {
+app.get("/", (req, res) =>{
   res.redirect("/todos");
 });
 
-app.get("/todos", function (req, res) {
+app.get("/todos", (req, res) =>{
   Todo.find({}, (err, todos) =>{
     if(err){
       console.log(err);
@@ -42,14 +38,14 @@ app.get("/todos", function (req, res) {
   });
 });
 
-app.get("/todos/new", function (req, res) {
+app.get("/todos/new", (req, res) =>{
  res.render("new"); 
 });
 
-app.post("/todos", function (req, res) {
+app.post("/todos", (req, res) =>{
  req.body.todo.text = req.sanitize(req.body.todo.text);
  let formData = req.body.todo;
- Todo.create(formData, function (err, newTodo) {
+ Todo.create(formData, (err, newTodo) =>{
     if(err){
       res.render("new");
     } else {
@@ -58,8 +54,8 @@ app.post("/todos", function (req, res) {
   });
 });
 
-app.get("/todos/:id/edit", function (req, res) {
- Todo.findById(req.params.id, function (err, todo) {
+app.get("/todos/:id/edit", (req, res) =>{
+ Todo.findById(req.params.id, (err, todo) =>{
    if(err){
      console.log(err);
      res.redirect("/")
@@ -69,7 +65,7 @@ app.get("/todos/:id/edit", function (req, res) {
  });
 });
 
-app.put("/todos/:id", function (req, res) {
+app.put("/todos/:id", (req, res) =>{
  Todo.findByIdAndUpdate(req.params.id, req.body.todo, { new: true }, (err, todo) =>{
    if(err){
      console.log(err);
@@ -79,8 +75,8 @@ app.put("/todos/:id", function (req, res) {
  });
 });
 
-app.delete("/todos/:id", function (req, res) {
- Todo.findByIdAndRemove(req.params.id, function (err, todo) {
+app.delete("/todos/:id", (req, res) =>{
+ Todo.findByIdAndRemove(req.params.id, (err, todo) =>{
    if(err){
      console.log(err);
    } else {
@@ -89,6 +85,10 @@ app.delete("/todos/:id", function (req, res) {
  }); 
 });
 
-app.listen(process.env.PORT || 3000, function () {
+/*app.listen(process.env.PORT || 3000, () => {
   console.log("Server running shopping app on port 3000 " + process.env.PORT);
+});*/
+
+app.listen(3000, () =>{
+  console.log('Server running shopping app on port 3000');
 });
